@@ -5,7 +5,7 @@ It's a short game made for a game jam with the theme 'Time'.
 
 ####################################################################################
 
-You can get this game by heading here -> https://itch.io/profile/sreenington
+You can get this game for free by heading here -> https://itch.io/profile/sreenington
 
 ####################################################################################
 
