@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/KingSkull.wav-f4ff970eaa8066f3b02ebbf16f2ffe59.sample"
+
+[deps]
+
+source_file="res://Assets/music/KingSkull.wav"
+dest_files=[ "res://.import/KingSkull.wav-f4ff970eaa8066f3b02ebbf16f2ffe59.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
