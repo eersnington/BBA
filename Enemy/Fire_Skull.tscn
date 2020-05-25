@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/flaming skull design.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/Fire_Skull.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/PlayerDetection.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.75502
+
+[sub_resource type="Animation" id=2]
+resource_name = "Gag1_Bro1"
+length = 12.5
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6, 3.1, 4.58, 5.58, 6.08, 6.58, 7.08, 7.58, 7.84, 8.08, 8.3, 8.46, 8.54, 8.62, 8.7, 10.34, 10.36, 10.38, 10.4, 10.42, 10.44, 10.46, 10.48, 10.5, 10.52, 10.54, 10.56, 10.58, 10.6, 10.62, 10.64, 10.66, 10.68, 10.7, 10.72, 10.74, 10.76, 10.78, 10.8, 10.82, 10.84, 10.86, 10.88, 10.9, 10.92, 10.94, 10.96, 10.98, 11, 11.02, 11.04, 11.06, 11.08, 11.1, 11.12, 11.14, 11.16, 11.18, 11.2, 11.22, 11.24, 11.26, 11.28, 11.3, 11.32, 11.82 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ -90.0, 0.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, 90.0, 180.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 12.02 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Gag1_Bro2"
+length = 12.5
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6, 3.1, 4.58, 5.58, 6.08, 6.58, 7.08, 7.58, 7.84, 8.08, 8.3, 8.46, 8.54, 8.62, 8.7, 10.32, 10.34, 10.36, 10.38, 10.4, 10.42, 10.44, 10.46, 10.48, 10.5, 10.52, 10.54, 10.56, 10.58, 10.6, 10.62, 10.64, 10.66, 10.68, 10.7, 10.72, 10.74, 10.76, 10.78, 10.8, 10.82, 10.84, 10.86, 10.88, 10.9, 10.92, 10.94, 10.96, 10.98, 11, 11.02, 11.04, 11.06, 11.08, 11.1, 11.12, 11.14, 11.16, 11.18, 11.2, 11.22, 11.24, 11.26, 11.28, 11.3, 11.32, 11.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ -90.0, 180.0, 90.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, 90.0, 0.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 6.28736
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 112.604
+
+[node name="Fire_Skull_Test" type="KinematicBody2D"]
+position = Vector2( 159.165, 130.734 )
+collision_layer = 4
+collision_mask = 15
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0598145, 0.807266 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "active"
+anims/Gag1_Bro1 = SubResource( 2 )
+anims/Gag1_Bro2 = SubResource( 3 )
+anims/active = SubResource( 8 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( 0.112297, -0.168457 )
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( -0.0327606, 0.96521 )
+shape = SubResource( 9 )
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 11
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource( 7 )
+
+[node name="firebal_spawn" type="Position2D" parent="."]
+position = Vector2( 0.342468, -0.220703 )
+
+[node name="Fire_Rate" type="Timer" parent="."]
+wait_time = 0.8
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="PlayerDetection" method="_on_PlayerDetection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="PlayerDetection" method="_on_PlayerDetection_body_exited"]
+[connection signal="timeout" from="Fire_Rate" to="." method="_on_Fire_Rate_timeout"]

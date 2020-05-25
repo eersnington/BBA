@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Boss_bar_over.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/BossbarUI.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Boss_bar.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Boss_bar_progress.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/BossBarGUI.gd" type="Script" id=5]
+
+[node name="BossbarUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GUI" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.867
+anchor_right = 0.5
+anchor_bottom = 0.867
+margin_left = -128.0
+margin_top = -0.0800323
+margin_right = 128.0
+margin_bottom = 22.92
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MainRed" type="TextureProgress" parent="GUI"]
+anchor_left = 0.594
+anchor_top = 0.3
+anchor_right = 0.594
+anchor_bottom = 0.3
+margin_left = -96.9979
+margin_top = 0.0104108
+margin_right = 97.0021
+margin_bottom = 9.01041
+max_value = 250.0
+value = 250.0
+texture_progress = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HurtWhite" type="TextureProgress" parent="GUI/MainRed"]
+self_modulate = Color( 1, 0.74902, 0, 1 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -97.0
+margin_right = 97.0
+margin_bottom = 9.0
+max_value = 250.0
+value = 250.0
+texture_progress = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="GUI/MainRed"]
+wait_time = 0.3
+one_shot = true
+[connection signal="timeout" from="GUI/MainRed/Timer" to="GUI/MainRed" method="_on_Timer_timeout"]

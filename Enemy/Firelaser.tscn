@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemy/Firelaser.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 11.5
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float intensity = 0.5f; // how white the center is
+uniform float layers = 5f; // the number of layers
+uniform float speed = 4f; // speed of motion
+
+float gradient(vec2 uv){
+    
+//    return (0.5f - distance(vec2(uv.x, 0f), vec2(0.5f, 0f))); // gradient top to bottom, focus in middle
+//   return (1f - distance(vec2(0f, uv.y), vec2(0f, 0f))); // gradient top
+//    return (1f - distance(vec2(0f, uv.y), vec2(0f, 1f))); // gradient bottom
+    return (0.5f - distance(vec2(uv.x, uv.y), vec2(0.5f, 0.5f))); //gradient circle
+}
+
+vec4 colorize(float c, float a){
+    vec4 pallete;
+    pallete = vec4(c,c,c,a);
+    pallete.g = (float(c > 0.5 || c > 0.9));
+    pallete.b = (float(c > 0.9));
+    pallete.r = (float(9f));
+    return pallete;
+}
+
+void fragment(){
+    // noise
+    vec4 bg = texture(TEXTURE, UV - TIME / speed);
+    
+    COLOR.r = gradient(UV);
+    // make noise more intense, apply and clamp
+    COLOR.r = clamp(COLOR.r * bg.r * intensity * 10f, 0f, 1f);
+    // seperate the noise into layers by removing decimal precision
+    COLOR.r = floor(COLOR.r * layers) / layers;
+    // make the bottom layer transparent
+    COLOR.a = float(COLOR.r > 0f);
+    // apply a color pallete
+    COLOR = colorize(COLOR.r, COLOR.a);
+}
+
+void fragment(){
+	vec4 bg = texture(TEXTURE, UV - TIME/ speed);
+	COLOR.r = gradient(UV);
+	COLOR.r = clamp(COLOR.r * bg.r * intensity * 10f, 0f, 1f);
+	COLOR.r = floor(COLOR.r * layers)/ layers;
+	COLOR.a = float(COLOR.r >0f);
+	COLOR = colorize(COLOR.r, COLOR.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/intensity = 0.5
+shader_param/layers = 3.0
+shader_param/speed = 0.01
+
+[sub_resource type="OpenSimplexNoise" id=3]
+octaves = 9
+period = 0.1
+persistence = 1.0
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=4]
+width = 32
+height = 32
+seamless = true
+noise = SubResource( 3 )
+
+[node name="Fire_Laser" type="KinematicBody2D"]
+scale = Vector2( 1.5, 1.5 )
+collision_layer = 16
+collision_mask = 9
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.27157e-06, -2.54313e-06 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -16, -32 )
+texture = SubResource( 4 )
+centered = false
+offset = Vector2( 0, 16 )
