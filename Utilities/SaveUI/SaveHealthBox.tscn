@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/dialoguebox1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/default.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Utilities/SaveUI/SaveHealth.gd" type="Script" id=4]
+[ext_resource path="res://Assets/music/Typing.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/No_selected.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Yes.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Yes_selected.png" type="Texture" id=8]
+[ext_resource path="res://Assets/No.png" type="Texture" id=9]
+
+[node name="SaveHealthBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -72.0
+margin_right = 120.0
+margin_bottom = -8.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 5.0
+margin_right = -8.0
+margin_bottom = -9.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control"]
+
+[node name="Typing" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource( 5 )
+
+[node name="Yes" type="TextureButton" parent="Control"]
+visible = false
+anchor_left = 0.267
+anchor_top = 0.625
+anchor_right = 0.267
+anchor_bottom = 0.625
+margin_left = -0.0800018
+margin_right = 15.92
+margin_bottom = 16.0
+texture_normal = ExtResource( 7 )
+texture_focused = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="No" type="TextureButton" parent="Control"]
+visible = false
+anchor_left = 0.633
+anchor_top = 0.625
+anchor_right = 0.633
+anchor_bottom = 0.625
+margin_left = 0.0800018
+margin_right = 24.08
+margin_bottom = 16.0
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 6 )
+[connection signal="tween_completed" from="Control/Tween" to="Control" method="_on_Tween_tween_completed"]
+[connection signal="tween_started" from="Control/Tween" to="Control" method="_on_Tween_tween_started"]
+[connection signal="pressed" from="Control/Yes" to="Control" method="_on_Yes_pressed"]
+[connection signal="pressed" from="Control/No" to="Control" method="_on_No_pressed"]

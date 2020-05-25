@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Utilities/AudioManager.gd" type="Script" id=1]
+
+[node name="Audio Manager" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Music"]
+
+[node name="Tween" type="Tween" parent="Music"]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="SFXPlayer_1" type="AudioStreamPlayer" parent="SFX"]
+
+[node name="SFXPlayer_2" type="AudioStreamPlayer" parent="SFX"]
+
+[node name="SFXPlayer_3" type="AudioStreamPlayer" parent="SFX"]

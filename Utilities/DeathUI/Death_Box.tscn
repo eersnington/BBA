@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/dialoguebox1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/default.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/No_selected.png" type="Texture" id=4]
+[ext_resource path="res://Utilities/DeathUI/Deathbox_Control.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Yes_selected.png" type="Texture" id=6]
+[ext_resource path="res://Assets/No.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Yes.png" type="Texture" id=8]
+[ext_resource path="res://Assets/music/Typing.wav" type="AudioStream" id=9]
+
+[node name="DeathBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -72.0
+margin_right = 120.0
+margin_bottom = -8.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control"]
+
+[node name="Typing" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource( 9 )
+
+[node name="No" type="TextureButton" parent="Control"]
+visible = false
+margin_left = 161.0
+margin_top = 37.0
+margin_right = 192.0
+margin_bottom = 57.0
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+
+[node name="Yes" type="TextureButton" parent="Control"]
+visible = false
+margin_left = 59.0
+margin_top = 37.0
+margin_right = 104.0
+margin_bottom = 57.0
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="Control"]
+one_shot = true
+[connection signal="tween_completed" from="Control/Tween" to="Control" method="_on_Tween_tween_completed"]
+[connection signal="tween_started" from="Control/Tween" to="Control" method="_on_Tween_tween_started"]
+[connection signal="pressed" from="Control/No" to="Control" method="_on_No_pressed"]
+[connection signal="pressed" from="Control/Yes" to="Control" method="_on_Yes_pressed"]
+[connection signal="timeout" from="Control/Timer" to="Control" method="_on_Timer_timeout"]

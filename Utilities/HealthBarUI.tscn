@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Hearts_UI_BG.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Hearts_UI_Border.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Hearts_UI_Hearts.png" type="Texture" id=3]
+[ext_resource path="res://Utilities/HealthBarUI.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Fonts/manaspace/manaspc.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 9
+font_data = ExtResource( 5 )
+
+[node name="HealthBarUI" type="Control"]
+margin_right = 130.0
+margin_bottom = 57.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="TextureProgress" parent="."]
+anchor_left = 0.066
+anchor_top = 0.132
+anchor_right = 0.066
+anchor_bottom = 0.132
+margin_left = 0.42
+margin_top = 0.476
+margin_right = 51.42
+margin_bottom = 17.476
+max_value = 3.0
+value = 3.0
+texture_under = ExtResource( 1 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateTween" type="Tween" parent="."]
+
+[node name="Invincibility" type="RichTextLabel" parent="."]
+visible = false
+margin_top = 27.0
+margin_right = 115.0
+margin_bottom = 42.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Invincibility"
+text = "Invincibility"

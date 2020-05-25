@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Resume_button.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Exit_button.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Resume_button_selected.png" type="Texture" id=3]
+[ext_resource path="res://Utilities/Pause Screen.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Exit_button_selected.png" type="Texture" id=5]
+
+[node name="Pause Screen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.152941, 0.152941, 0.152941, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainUI" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MainUI"]
+margin_right = 320.0
+margin_bottom = 240.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/CenterContainer"]
+margin_left = 80.0
+margin_top = 83.0
+margin_right = 240.0
+margin_bottom = 157.0
+
+[node name="Resume" type="TextureButton" parent="MainUI/CenterContainer/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 35.0
+texture_normal = ExtResource( 1 )
+texture_focused = ExtResource( 3 )
+
+[node name="Exit" type="TextureButton" parent="MainUI/CenterContainer/VBoxContainer"]
+margin_top = 39.0
+margin_right = 160.0
+margin_bottom = 74.0
+texture_normal = ExtResource( 2 )
+texture_focused = ExtResource( 5 )
+[connection signal="pressed" from="MainUI/CenterContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="MainUI/CenterContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

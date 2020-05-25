@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/dialoguebox1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/default.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/right-hintbox-triangle.png" type="Texture" id=3]
+[ext_resource path="res://Utilities/Control.gd" type="Script" id=4]
+[ext_resource path="res://Assets/music/Typing.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hover"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 224, 48 ), Vector2( 227, 48 ) ]
+}
+
+[node name="Dialogue Box" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -72.0
+margin_right = 120.0
+margin_bottom = -8.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 5.0
+margin_right = -8.0
+margin_bottom = -9.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right-hintbox-triangle" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 224, 48 )
+scale = Vector2( 0.472222, 0.350001 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/right-hintbox-triangle"]
+autoplay = "hover"
+anims/hover = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="Control"]
+
+[node name="Typing" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource( 5 )
+[connection signal="tween_completed" from="Control/Tween" to="Control" method="_on_Tween_tween_completed"]
+[connection signal="tween_started" from="Control/Tween" to="Control" method="_on_Tween_tween_started"]
