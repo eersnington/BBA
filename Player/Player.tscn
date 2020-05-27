@@ -167,6 +167,5 @@ shape = SubResource( 8 )
 position = Vector2( -16.3453, -2.40678 )
 
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]

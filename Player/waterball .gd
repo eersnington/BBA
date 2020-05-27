@@ -41,19 +41,23 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocityPlayer * delta)
 	var collision_list = ["Walls2", "Walls3", "Walls" , "top", "Pizzaz"]
 	if collision && collision_list.has(collision.collider.name) or collision && collision.collider.get_class() == "StaticBody2D":
-		destroy()
+		destroy(1)
 	if collision && collision.collider.name == "King":
 		get_tree().get_root().get_node("Stage/HUD/EnemyHUD/BossbarUI").damage_boss()
-		destroy()
-		
-
-func destroy():
+		destroy(0)
+func destroy(type):
 	var shake = get_tree().get_root().get_node("Stage/Camera2D/ScreenShake")
 	shake.start()
 	if get_tree().get_root().get_node("Stage").has_node("Player/Player"):
 		player.set_state(player.REVERT)
-		var boom = load("res://Assets/music/ExplosionV2.wav")
-		AudioManager.play_sfx(boom, 0)
+		if type == 0:
+			var boom = load("res://Assets/music/ExplosionV2.wav")
+			AudioManager.play_sfx(boom, 0)
+		if type == 1:
+			var thud = load("res://Assets/music/thud.wav")
+			AudioManager.play_sfx(thud, 0)
+		if type == 2:
+			pass
 	else:
 		pass
 	Engine.time_scale = 1

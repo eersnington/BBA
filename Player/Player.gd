@@ -12,6 +12,7 @@ var invulnerability = false
 var shoot = true
 
 export (float) var max_health = 3
+export (float) var invincibility_time = 1.5
 onready var health = max_health setget _set_health, _get_health
 
 const WATERBALL = preload("res://Player/Waterball.tscn")
@@ -109,6 +110,7 @@ func set_state(new_state):
 
 func damage(amount):
 	if invulnerabilityTimer.is_stopped():
+		invulnerabilityTimer.wait_time = invincibility_time
 		invulnerabilityTimer.start()
 		_set_health(health - amount)
 		get_tree().get_root().get_node("Stage/HUD/PlayerHUD/ScreenShake").start()
@@ -118,13 +120,18 @@ func damage(amount):
 		AudioManager.play_sfx(hurt)
 		emit_signal("damage_received")
 		
+func heal(amount):
+	_set_health(health + amount)
+	var heal = load("res://Assets/music/heal.wav")
+	AudioManager.play_sfx(heal)
+	
 func talk_state():
 	velocityPlayer = Vector2.ZERO
 	
 func death_state():
 	velocityPlayer = Vector2.ZERO
 	if get_tree().get_root().get_node("Stage/Player").has_node("Waterball"):
-		get_tree().get_root().get_node("Stage/Player/Waterball").destroy()
+		get_tree().get_root().get_node("Stage/Player/Waterball").destroy(2)
 	var MAIN = load("res://Utilities/DeathUI/Death_Box.tscn")
 	var main = MAIN.instance()
 	get_tree().get_root().get_node("Stage/HUD").add_child(main)
