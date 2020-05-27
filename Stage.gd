@@ -5,6 +5,7 @@ const thud = preload("res://Assets/music/thudV2.wav")
 
 var GAMER = preload("res://Player/Player.tscn")
 var gamer = GAMER.instance()
+var transition = false
 
 func _ready():
 	AudioManager.stop_music()
@@ -41,6 +42,7 @@ func _input(event):
 
 func _on_ToKing_body_entered(body):
 	if body.name == "Player":
+		transition = true
 		var suspense = load("res://Assets/music/ToKing.wav")
 		AudioManager.play_sfx(suspense)
 		gamer.set_state(gamer.TALK)

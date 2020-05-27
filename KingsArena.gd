@@ -1,6 +1,7 @@
 extends Node
 
 const thud = preload("res://Assets/music/thudV2.wav")
+var transition = false
 
 func _ready():
 	AudioManager.stop_music()

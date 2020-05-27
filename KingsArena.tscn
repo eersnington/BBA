@@ -802,10 +802,14 @@ position = Vector2( 280, -360 )
 
 [node name="Player" type="Node2D" parent="."]
 
+[node name="Hearts" type="Position2D" parent="Player"]
+position = Vector2( 168, -312 )
+
 [node name="Player" parent="Player" groups=[
 "Player",
 ] instance=ExtResource( 1 )]
 position = Vector2( 170.05, 164.322 )
+invincibility_time = 3.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
