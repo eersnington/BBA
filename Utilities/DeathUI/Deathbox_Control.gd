@@ -15,8 +15,14 @@ func _ready():
 	
 
 func _process(_delta):
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && dialogue_index <=1:
 		start_dialogue()
+	elif Input.is_action_just_pressed("shoot") && dialogue_index == 2:
+		$Tween.playback_speed = 20
+		$Timer.stop()
+		$Yes.visible = true
+		$No.visible = true
+		$Yes.grab_focus()
 	if $Yes.is_hovered() == true:
 			$Yes.grab_focus()
 	if $No.is_hovered() == true:

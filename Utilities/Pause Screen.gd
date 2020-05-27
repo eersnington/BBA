@@ -17,7 +17,7 @@ func _physics_process(_delta):
 		Exit_button.grab_focus()
 		
 func _input(event):
-	if event.is_action_pressed("Pause"):
+	if event.is_action_pressed("Pause") && get_tree().get_root().get_node("Stage").transition == false:
 		Resume_button.grab_focus()
 		get_tree().paused = not get_tree().paused
 		visible = not visible

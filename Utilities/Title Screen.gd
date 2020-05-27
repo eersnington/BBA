@@ -23,6 +23,10 @@ func _physics_process(_delta):
 		Saves_button.grab_focus()
 
 func _on_Play_pressed():
+	var save_game = File.new()
+	if save_game.file_exists("user://saves/save.json"):
+		var dir = Directory.new()
+		dir.remove(GameSaver.SAVE_PATH)
 	Globals.set_intro(false)
 	Globals.set_gag(false)
 # warning-ignore:return_value_discarded
