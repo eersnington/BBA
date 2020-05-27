@@ -89,7 +89,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 step = 0.2
@@ -106,10 +106,10 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=5]
 radius = 6.28736
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 112.604
 
 [node name="Fire_Skull_Test" type="KinematicBody2D"]
@@ -130,7 +130,7 @@ hframes = 3
 autoplay = "active"
 anims/Gag1_Bro1 = SubResource( 2 )
 anims/Gag1_Bro2 = SubResource( 3 )
-anims/active = SubResource( 8 )
+anims/active = SubResource( 4 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 0.112297, -0.168457 )
@@ -139,7 +139,7 @@ collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( -0.0327606, 0.96521 )
-shape = SubResource( 9 )
+shape = SubResource( 5 )
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 visible = false
@@ -148,7 +148,7 @@ collision_mask = 11
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="firebal_spawn" type="Position2D" parent="."]
 position = Vector2( 0.342468, -0.220703 )

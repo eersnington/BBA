@@ -5,6 +5,8 @@ const LASER = preload("res://Enemy/Firelaser.tscn")
 const Skulls = preload("res://Enemy/Fire_Skull.gd")
 const DEATH_EFFECT = preload("res://Enemy/KingExplosionEffect.tscn")
 const KSkull = preload("res://Assets/music/KingSkull.wav")
+const HEART = preload("res://Player/Heart.tscn")
+
 
 onready var enemies_list = get_parent().get_node("Minions")
 onready var player = get_tree().get_root().get_node("Stage/Player/Player")
@@ -50,6 +52,9 @@ func _process(_delta):
 		if enemies_list.get_child_count() == 0:
 			set_state(TELEPORT)
 			spawned = false
+			var heart = HEART.instance()
+			get_tree().get_root().get_node("Stage/Player/Hearts").add_child(heart)
+			heart.set_global_position(get_tree().get_root().get_node("Stage/Player/Hearts").global_position)
 	if get_tree().get_root().get_node("Stage/Player").has_node("Waterball")  && state != DEATH:
 		set_state(MOVE)
 		

@@ -67,7 +67,7 @@ func move_state(delta):
 
 func _on_Hitbox_body_entered(body):
 	if body.name == "Waterball":
-		body.destroy()
+		body.destroy(0)
 		blow_up()
 		
 func blow_up():
@@ -90,7 +90,7 @@ func shoot_fire(direction):
 	var fireball = FIREBALL.instance()
 	get_tree().get_root().get_node("Stage/Enemies").add_child(fireball) 
 	fireball.set_position($firebal_spawn.get_global_position())
-	fireball.velocity = fireball.velocity* direction
+	fireball.velocityOrb = fireball.velocityOrb* direction
    
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Gag1_Bro2":

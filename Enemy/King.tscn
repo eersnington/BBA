@@ -128,11 +128,11 @@ anims/Open_mouth = SubResource( 4 )
 anims/Spawn = SubResource( 5 )
 
 [node name="Teleport" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.4
 autostart = true
 
 [node name="Shoot" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.6
 
 [node name="Spawn" type="Timer" parent="."]
 wait_time = 1.5

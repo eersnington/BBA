@@ -9,5 +9,5 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		if collision.collider == player:
-			player.damage(1)
+			player.damage(2)
 		queue_free()
